@@ -165,7 +165,7 @@ def play():
 
     im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im)/255.0
-    image=image.permute(1,2,0)
+    image=image.permute((1,2,0))
     print(image.shape)
 
     normalize = transforms.Normalize(
