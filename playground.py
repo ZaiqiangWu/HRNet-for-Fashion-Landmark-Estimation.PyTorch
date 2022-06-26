@@ -165,6 +165,7 @@ def play():
 
     im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im)/255.0
+    print(image.shape)
 
     normalize = transforms.Normalize(
         mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
