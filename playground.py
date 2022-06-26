@@ -161,6 +161,7 @@ def play():
     model = torch.nn.DataParallel(model).cuda()
     input =torch.zeros(1,3,288,384).cuda()
     output=model(input)
+    print(output.shape)
 
 
 if __name__ == '__main__':
