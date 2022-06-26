@@ -37,7 +37,7 @@ def parse_args():
     # general
     parser.add_argument('--cfg',
                         help='experiment configure file name',
-                        required=True,
+                        #required=True,
                         default='experiments/deepfashion2/hrnet/w48_384x288_adam_lr1e-3.yaml',
                         type=str)
 
