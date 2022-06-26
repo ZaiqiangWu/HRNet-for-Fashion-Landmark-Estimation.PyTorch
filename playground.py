@@ -165,8 +165,20 @@ def play():
 
     im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im)/255.0
-    print(image.max())
+
+    normalize = transforms.Normalize(
+        mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+    )
+
+    resize = transforms.resize(size=[288, 384])
+    T = transforms.Compose([
+        transforms.ToTensor(),
+        normalize,
+        resize])
+    image = T(image)
+    print(image.mean())
     print(image.shape)
+
     input = torch.zeros(1, 3, 288, 384).cuda()
     print(input.shape)
     start = time.time()
