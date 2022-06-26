@@ -189,7 +189,8 @@ def play():
     input = torch.zeros(1, 3, 384, 288).cuda()
     print(input.shape)
     start = time.time()
-    heatmap = model(input)
+    with torch.no_grad():
+        heatmap = model(input)
     end = time.time()
     print(heatmap.shape)
     print("Elapsed time: ", end - start)
