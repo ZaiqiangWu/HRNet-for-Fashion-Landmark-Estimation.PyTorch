@@ -188,8 +188,9 @@ def play():
     image = transform(image)
 
     print(image.shape)
+    im =image.squeeze().permute(1,2,0).cpu().numpy()
 
-    input = torch.zeros(1, 3, 384, 288).cuda()
+    input = image.cuda()
     print(input.shape)
     start = time.time()
     with torch.no_grad():
