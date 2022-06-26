@@ -165,7 +165,7 @@ def play():
 
     im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im)/255.0
-    print(image.mean())
+    print(image.max())
     print(image.shape)
     input = torch.zeros(1, 3, 288, 384).cuda()
     print(input.shape)
