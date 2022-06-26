@@ -179,7 +179,7 @@ def play():
     print(image[0,0,0])
     image = normalize(image)
     image = transform(image)
-    print(image[0,0,0,0])
+    print(image[0,0,0])
     print(image.shape)
 
     input = torch.zeros(1, 3, 288, 384).cuda()
