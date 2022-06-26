@@ -193,7 +193,7 @@ def play():
     end = time.time()
     print(heatmap.shape)
     print("Elapsed time: ", end - start)
-    plt.imshow(heatmap.cpu().squeeze().mean(0))
+    plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
     plt.show()
 
 
