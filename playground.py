@@ -200,8 +200,16 @@ def play():
     preds, maxvals=get_max_preds(heatmap.cpu().detach().numpy())
     print(len(preds[0]))
     print(len(maxvals[0]))
-    #plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
-    #plt.show()
+    xs=[]
+    ys=[]
+    for i in range(len(maxvals[0])):
+        if maxvals[0][i]>0.5:
+            xs.append(preds[0][i][0]*4)
+            ys.append(preds[0][i][1]*4)
+
+    plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
+    plt.scatter(xs, ys, c="blue")
+    plt.show()
 
 
 if __name__ == '__main__':
