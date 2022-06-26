@@ -180,15 +180,16 @@ def play():
     )
 
     transform = transforms.Resize((384, 288))
+    image = transform(image)
+
+    print(image.shape)
+    im = image.permute(1, 2, 0).cpu().numpy()
     print(image[0].mean())
     print(image[0].std())
     image = normalize(image)
     print(image[0].mean())
     print(image[0].std())
-    image = transform(image)
 
-    print(image.shape)
-    im =image.permute(1,2,0).cpu().numpy()
 
     input = image.unsqueeze(0).cuda()
     print(input.shape)
