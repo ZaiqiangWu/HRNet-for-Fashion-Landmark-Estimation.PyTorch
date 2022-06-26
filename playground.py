@@ -26,6 +26,7 @@ from config import cfg
 from config import update_config
 from core.loss import JointsMSELoss
 from core.function import validate
+from core.inference import get_max_preds
 from utils.utils import create_logger
 
 import dataset
@@ -196,8 +197,11 @@ def play():
     end = time.time()
     print(heatmap.shape)
     print("Elapsed time: ", end - start)
-    plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
-    plt.show()
+    preds, maxvals=get_max_preds(heatmap)
+    print(preds)
+    print(maxvals)
+    #plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
+    #plt.show()
 
 
 if __name__ == '__main__':
