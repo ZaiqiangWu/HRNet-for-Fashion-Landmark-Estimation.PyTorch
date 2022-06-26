@@ -163,7 +163,7 @@ def play():
     model = torch.nn.DataParallel(model).cuda()
     model.eval()
 
-    im = cv2.imread("./images/00.JPG", mode='RGB')
+    im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im)
     print(image.mean())
     print(image.shape)
