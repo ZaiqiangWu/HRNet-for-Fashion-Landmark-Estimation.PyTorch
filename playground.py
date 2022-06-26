@@ -21,7 +21,7 @@ import torch.utils.data
 import torch.utils.data.distributed
 import torchvision.transforms as transforms
 
-import _init_paths
+import tools._init_paths
 from config import cfg
 from config import update_config
 from core.loss import JointsMSELoss
