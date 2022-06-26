@@ -170,12 +170,10 @@ def play():
         mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
     )
 
-    resize = transforms.resize(size=[288, 384])
-    T = transforms.Compose([
-        transforms.ToTensor(),
-        normalize,
-        resize])
-    image = T(image)
+    transform = transforms.Resize((300, 350))
+
+    image = normalize(image)
+    image = transform(image)
     print(image.mean())
     print(image.shape)
 
