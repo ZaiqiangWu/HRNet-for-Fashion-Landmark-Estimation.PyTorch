@@ -203,11 +203,12 @@ def play():
     xs=[]
     ys=[]
     for i in range(len(maxvals[0])):
-        if maxvals[0][i]>0.5:
+        if maxvals[0][i]>0.1:
             xs.append(preds[0][i][0]*4)
             ys.append(preds[0][i][1]*4)
 
-    plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
+    #plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
+    plt.imshow(im)
     plt.scatter(xs, ys, c="blue")
     plt.show()
 
