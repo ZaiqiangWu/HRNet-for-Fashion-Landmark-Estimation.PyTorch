@@ -198,8 +198,8 @@ def play():
     print(heatmap.shape)
     print("Elapsed time: ", end - start)
     preds, maxvals=get_max_preds(heatmap.cpu().detach().numpy())
-    print(preds)
-    print(maxvals)
+    print(len(preds))
+    print(len(maxvals))
     #plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
     #plt.show()
 
