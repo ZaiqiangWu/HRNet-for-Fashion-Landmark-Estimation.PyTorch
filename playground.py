@@ -159,7 +159,8 @@ def play():
     logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
     model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=True)  # False
     model = torch.nn.DataParallel(model).cuda()
-    input =torch.zeros(1,3,288,384).cuda()
+    input =torch.zeros(1,3,289,384).cuda()
+    print(input.shape)
     output=model(input)
     print(output.shape)
 
