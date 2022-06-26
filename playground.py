@@ -182,7 +182,7 @@ def play():
     print(image[0,0,0])
     print(image.shape)
 
-    input = torch.zeros(1, 3, 288, 384).cuda()
+    input = torch.zeros(1, 3, 384, 288).cuda()
     print(input.shape)
     start = time.time()
     heatmap = model(input)
