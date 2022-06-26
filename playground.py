@@ -34,6 +34,7 @@ import time
 import cv2
 import numpy as np
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description='Train keypoints network')
     # general
@@ -164,8 +165,9 @@ def play():
     model.eval()
 
     im = cv2.imread("./images/00.JPG")
-    image = torch.from_numpy(im)/255.0
-    image=image.permute((1,2,0))
+    image = torch.from_numpy(im) / 255.0
+    print(image.shape)
+    image = image.permute([1, 2, 0])
     print(image.shape)
 
     normalize = transforms.Normalize(
