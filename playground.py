@@ -179,7 +179,7 @@ def play():
 
     print(image[0,0,0])
     #image = normalize(image)
-    image =(image-mean)/std
+    image =(image-torch.Tensor(mean))/torch.Tensor(std)
     print(image[0, 0, 0])
     image = transform(image)
 
