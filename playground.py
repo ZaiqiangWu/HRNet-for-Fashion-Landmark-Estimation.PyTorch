@@ -178,8 +178,7 @@ def play():
     transform = transforms.Resize((384, 288))
 
     print(image[0,0,0])
-    #image = normalize(image)
-    image =(image-torch.Tensor(mean))/torch.Tensor(std)
+    image = normalize(image)
     print(image[0, 0, 0])
     image = transform(image)
 
