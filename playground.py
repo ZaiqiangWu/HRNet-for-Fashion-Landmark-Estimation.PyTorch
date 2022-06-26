@@ -31,14 +31,15 @@ from utils.utils import create_logger
 import dataset
 import models
 import time
-
+import cv2
+import numpy as np
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train keypoints network')
     # general
     parser.add_argument('--cfg',
                         help='experiment configure file name',
-                        #required=True,
+                        # required=True,
                         default='experiments/deepfashion2/hrnet/w48_384x288_adam_lr1e-3.yaml',
                         type=str)
 
@@ -161,15 +162,20 @@ def play():
     model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=True)  # False
     model = torch.nn.DataParallel(model).cuda()
     model.eval()
-    input =torch.zeros(1,3,288,384).cuda()
+
+    im = cv2.imread("./images/00.JPG", mode='RGB')
+    image = torch.from_numpy(im)
+    print(image.mean())
+    print(image.shape)
+    input = torch.zeros(1, 3, 288, 384).cuda()
     print(input.shape)
-    start =time.time()
-    output=model(input)
-    end=time.time()
-    print(output.shape)
-    print("Elasped time: ",end-start)
+    start = time.time()
+    heatmap = model(input)
+    end = time.time()
+    print(heatmap.shape)
+    print("Elapsed time: ", end - start)
 
 
 if __name__ == '__main__':
-    #main()
+    # main()
     play()
