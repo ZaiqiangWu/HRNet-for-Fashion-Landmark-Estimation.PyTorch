@@ -30,6 +30,7 @@ from utils.utils import create_logger
 
 import dataset
 import models
+import time
 
 
 def parse_args():
@@ -159,10 +160,14 @@ def play():
     logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
     model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=True)  # False
     model = torch.nn.DataParallel(model).cuda()
+    model.eval()
     input =torch.zeros(1,3,288,384).cuda()
     print(input.shape)
+    start =time.time()
     output=model(input)
+    end=time.time()
     print(output.shape)
+    print("Elasped time: ",end-start)
 
 
 if __name__ == '__main__':
