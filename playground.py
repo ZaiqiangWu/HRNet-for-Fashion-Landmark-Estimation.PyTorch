@@ -205,7 +205,7 @@ def play():
     xs=[]
     ys=[]
     for i in range(len(maxvals[0])):
-        if maxvals[0][i]>0.1:
+        if maxvals[0][i]>0.9:
             xs.append(preds[0][i][0]*4)
             ys.append(preds[0][i][1]*4)
 
