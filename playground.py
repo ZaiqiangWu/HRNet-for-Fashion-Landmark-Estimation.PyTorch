@@ -153,6 +153,7 @@ def play():
     model = eval('models.' + cfg.MODEL.NAME + '.get_pose_net')(
         cfg, is_train=False
     )
+    cfg.defrost()
     cfg.TEST.MODEL_FILE = 'models/pose_hrnet-w48_384x288-deepfashion2_mAP_0.7017.pth'
 
     logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
