@@ -167,19 +167,20 @@ def play():
     im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im) / 255.0
     print(image.shape)
-    image = image.permute([2, 1, 0])
+    image = image.permute([2, 0, 1])
     print(image.shape)
 
     normalize = transforms.Normalize(
         mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
     )
 
-    transform = transforms.Resize((288, 384))
+    transform = transforms.Resize((384, 288))
 
     print(image[0,0,0])
     image = normalize(image)
+    print(image[0, 0, 0])
     image = transform(image)
-    print(image[0,0,0])
+
     print(image.shape)
 
     input = torch.zeros(1, 3, 384, 288).cuda()
