@@ -166,7 +166,7 @@ def play():
     model = torch.nn.DataParallel(model).cuda()
     model.eval()
 
-    im = cv2.imread("./images/02.JPG")
+    im = cv2.imread("./images/03.JPG")
     image = torch.from_numpy(im) / 255.0
     print(image.shape)
     image = image.permute([2, 0, 1])
