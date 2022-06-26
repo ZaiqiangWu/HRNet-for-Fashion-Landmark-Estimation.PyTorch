@@ -171,10 +171,10 @@ def play():
     print(image.shape)
     image = image.permute([2, 0, 1])
     print(image.shape)
-    #mean = [0.485, 0.456, 0.406]#[image[0].mean(),image[1].mean(),image[2].mean()]#
-    #std = [0.229, 0.224, 0.225]#[image[0].std(), image[1].std(),image[2].std()]#
-    mean = [image[0].mean(),image[1].mean(),image[2].mean()]#
-    std = [image[0].std(), image[1].std(),image[2].std()]#
+    mean = [0.485, 0.456, 0.406]#[image[0].mean(),image[1].mean(),image[2].mean()]#
+    std = [0.229, 0.224, 0.225]#[image[0].std(), image[1].std(),image[2].std()]#
+    #mean = [image[0].mean(),image[1].mean(),image[2].mean()]#
+    #std = [image[0].std(), image[1].std(),image[2].std()]#
     normalize = transforms.Normalize(
         mean=mean, std=std
     )
@@ -205,7 +205,7 @@ def play():
     xs=[]
     ys=[]
     for i in range(len(maxvals[0])):
-        if maxvals[0][i]>0.9:
+        if maxvals[0][i]>0.5:
             xs.append(preds[0][i][0]*4)
             ys.append(preds[0][i][1]*4)
 
