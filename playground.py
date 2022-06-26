@@ -169,15 +169,17 @@ def play():
     print(image.shape)
     image = image.permute([2, 0, 1])
     print(image.shape)
-
+    mean = [0.485, 0.456, 0.406]
+    std = [0.229, 0.224, 0.225]
     normalize = transforms.Normalize(
-        mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+        mean=mean, std=std
     )
 
     transform = transforms.Resize((384, 288))
 
     print(image[0,0,0])
-    image = normalize(image)
+    #image = normalize(image)
+    image =(image-mean)/std
     print(image[0, 0, 0])
     image = transform(image)
 
