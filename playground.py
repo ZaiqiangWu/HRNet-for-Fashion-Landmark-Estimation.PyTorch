@@ -33,6 +33,7 @@ import models
 import time
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def parse_args():
@@ -192,6 +193,8 @@ def play():
     end = time.time()
     print(heatmap.shape)
     print("Elapsed time: ", end - start)
+    plt.imshow(heatmap.squeeze().mean(0))
+    plt.show()
 
 
 if __name__ == '__main__':
