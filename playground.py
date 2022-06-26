@@ -178,8 +178,10 @@ def play():
     transform = transforms.Resize((384, 288))
 
     print(image[0].mean())
+    print(image[0].std())
     image = normalize(image)
     print(image[0].mean())
+    print(image[0].std())
     image = transform(image)
 
     print(image.shape)
