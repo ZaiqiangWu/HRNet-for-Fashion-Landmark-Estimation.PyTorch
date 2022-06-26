@@ -174,8 +174,9 @@ def play():
         mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
     )
 
-    transform = transforms.Resize((300, 350))
+    transform = transforms.Resize((288, 384))
 
+    print(image.mean())
     image = normalize(image)
     image = transform(image)
     print(image.mean())
