@@ -166,7 +166,7 @@ def play():
     model = torch.nn.DataParallel(model).cuda()
     model.eval()
 
-    im = cv2.imread("./images/03.JPG")
+    im = cv2.imread("./images/00.JPG")
     image = torch.from_numpy(im) / 255.0
     print(image.shape)
     image = image.permute([2, 0, 1])
@@ -205,7 +205,7 @@ def play():
     xs=[]
     ys=[]
     for i in range(len(maxvals[0])):
-        if maxvals[0][i]>0.1:
+        if maxvals[0][i]>0.8:
             xs.append(preds[0][i][0]*4)
             ys.append(preds[0][i][1]*4)
 
