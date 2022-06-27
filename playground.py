@@ -145,7 +145,7 @@ def main():
              final_output_dir, tb_log_dir)
 
 
-def play():
+def play(file_name):
     args = parse_args()
     update_config(cfg, args)
     logger, final_output_dir, tb_log_dir = create_logger(
@@ -166,7 +166,7 @@ def play():
     model = torch.nn.DataParallel(model).cuda()
     model.eval()
 
-    im = cv2.imread("./images/00.JPG")
+    im = cv2.imread("./images/" + file_name + ".JPG")
     image = torch.from_numpy(im) / 255.0
     print(image.shape)
     image = image.permute([2, 0, 1])
@@ -212,10 +212,14 @@ def play():
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
     plt.imshow(im)
     plt.scatter(xs, ys, c="blue")
-    plt.savefig('foo.png', bbox_inches='tight')
-    #plt.show()
+    plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
+    # plt.show()
 
 
 if __name__ == '__main__':
     # main()
-    play()
+    i = 0
+    while (os.path.exists("images" + str(i).zfill(2) + "./JPG")):
+        print("Processing: ", i)
+        play(str(i).zfill(2))
+        i = i + 1
