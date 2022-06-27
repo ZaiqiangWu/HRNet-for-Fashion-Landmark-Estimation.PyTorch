@@ -144,6 +144,7 @@ def main():
     validate(cfg, valid_loader, valid_dataset, model, criterion,
              final_output_dir, tb_log_dir)
 
+
 def load_model():
     args = parse_args()
     update_config(cfg, args)
@@ -166,14 +167,12 @@ def load_model():
     model.eval()
     return model
 
+
 def play(model, file_name):
-
-
     im = cv2.imread("./images/" + file_name + ".JPG")
     image = torch.from_numpy(im) / 255.0
     print(image.shape)
     image = image.permute([2, 0, 1])
-    image = image[[2, 1, 0], :, :]
     print(image.shape)
     mean = [0.485, 0.456, 0.406]  # [image[0].mean(),image[1].mean(),image[2].mean()]#
     std = [0.229, 0.224, 0.225]  # [image[0].std(), image[1].std(),image[2].std()]#
@@ -188,6 +187,7 @@ def play(model, file_name):
 
     print(image.shape)
     im = image.permute(1, 2, 0).cpu().numpy()
+    im = im[:, :, [2, 1, 0]]
     print(image[0].mean())
     print(image[0].std())
     image = normalize(image)
@@ -221,7 +221,7 @@ def play(model, file_name):
 
 if __name__ == '__main__':
     # main()
-    model =load_model()
+    model = load_model()
     i = 0
     while (os.path.exists("./images/" + str(i).zfill(2) + ".JPG")):
         print("Processing: ", i)
