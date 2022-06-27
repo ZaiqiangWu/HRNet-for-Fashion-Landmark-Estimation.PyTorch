@@ -212,7 +212,8 @@ def play():
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
     plt.imshow(im)
     plt.scatter(xs, ys, c="blue")
-    plt.show()
+    plt.savefig('foo.png', bbox_inches='tight')
+    #plt.show()
 
 
 if __name__ == '__main__':
