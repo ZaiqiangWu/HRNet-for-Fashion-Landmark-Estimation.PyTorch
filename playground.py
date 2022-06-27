@@ -219,7 +219,7 @@ def play(file_name):
 if __name__ == '__main__':
     # main()
     i = 0
-    while (os.path.exists("images" + str(i).zfill(2) + "./JPG")):
+    while (os.path.exists("images/" + str(i).zfill(2) + "./JPG")):
         print("Processing: ", i)
         play(str(i).zfill(2))
         i = i + 1
