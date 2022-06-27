@@ -170,11 +170,12 @@ def play():
     image = torch.from_numpy(im) / 255.0
     print(image.shape)
     image = image.permute([2, 0, 1])
+    image = image[[2, 1, 0], :, :]
     print(image.shape)
-    mean = [0.485, 0.456, 0.406]#[image[0].mean(),image[1].mean(),image[2].mean()]#
-    std = [0.229, 0.224, 0.225]#[image[0].std(), image[1].std(),image[2].std()]#
-    #mean = [image[0].mean(),image[1].mean(),image[2].mean()]#
-    #std = [image[0].std(), image[1].std(),image[2].std()]#
+    mean = [0.485, 0.456, 0.406]  # [image[0].mean(),image[1].mean(),image[2].mean()]#
+    std = [0.229, 0.224, 0.225]  # [image[0].std(), image[1].std(),image[2].std()]#
+    # mean = [image[0].mean(),image[1].mean(),image[2].mean()]#
+    # std = [image[0].std(), image[1].std(),image[2].std()]#
     normalize = transforms.Normalize(
         mean=mean, std=std
     )
@@ -190,7 +191,6 @@ def play():
     print(image[0].mean())
     print(image[0].std())
 
-
     input = image.unsqueeze(0).cuda()
     print(input.shape)
     start = time.time()
@@ -199,17 +199,17 @@ def play():
     end = time.time()
     print(heatmap.shape)
     print("Elapsed time: ", end - start)
-    preds, maxvals=get_max_preds(heatmap.cpu().detach().numpy())
+    preds, maxvals = get_max_preds(heatmap.cpu().detach().numpy())
     print(len(preds[0]))
     print(len(maxvals[0]))
-    xs=[]
-    ys=[]
+    xs = []
+    ys = []
     for i in range(len(maxvals[0])):
-        if maxvals[0][i]>0.65:
-            xs.append(preds[0][i][0]*4)
-            ys.append(preds[0][i][1]*4)
+        if maxvals[0][i] > 0.65:
+            xs.append(preds[0][i][0] * 4)
+            ys.append(preds[0][i][1] * 4)
 
-    #plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
+    # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
     plt.imshow(im)
     plt.scatter(xs, ys, c="blue")
     plt.show()
