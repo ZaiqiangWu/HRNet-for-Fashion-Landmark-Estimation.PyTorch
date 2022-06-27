@@ -144,8 +144,7 @@ def main():
     validate(cfg, valid_loader, valid_dataset, model, criterion,
              final_output_dir, tb_log_dir)
 
-
-def play(file_name):
+def load_model():
     args = parse_args()
     update_config(cfg, args)
     logger, final_output_dir, tb_log_dir = create_logger(
@@ -165,6 +164,10 @@ def play(file_name):
     model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=True)  # False
     model = torch.nn.DataParallel(model).cuda()
     model.eval()
+    return model
+
+def play(model, file_name):
+
 
     im = cv2.imread("./images/" + file_name + ".JPG")
     image = torch.from_numpy(im) / 255.0
@@ -218,8 +221,9 @@ def play(file_name):
 
 if __name__ == '__main__':
     # main()
+    model =load_model()
     i = 0
     while (os.path.exists("./images/" + str(i).zfill(2) + ".JPG")):
         print("Processing: ", i)
-        play(str(i).zfill(2))
+        play(model, str(i).zfill(2))
         i = i + 1
