@@ -107,7 +107,7 @@ def main():
             # normalize,
         ])
     )
-    for i in range(100):
+    for i in range(len(train_dataset)):
         print("----------------------------------")
         print_info(train_dataset,i)
 
