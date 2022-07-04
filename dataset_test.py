@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument('--cfg',
                         help='experiment configure file name',
                         # required=True,
-                        default='experiments/deepfashion2/hrnet/w48_384x288_adam_lr1e-3.yaml',
+                        default='experiments/deepfashion2/dataset_test.yaml',
                         type=str)
 
     parser.add_argument('opts',
