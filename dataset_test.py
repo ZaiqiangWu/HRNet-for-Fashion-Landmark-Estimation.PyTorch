@@ -111,7 +111,7 @@ def main():
     print("input:",input.shape)
     print("target:",target.shape)
     print("target_weight:",target_weight.shape)
-    print("meta:",meta)
+    print("meta:",meta.keys())
     #plt.imshow(input.permute(1,2,0).numpy())
     #plt.show()
 
