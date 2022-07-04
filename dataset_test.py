@@ -108,6 +108,7 @@ def main():
         ])
     )
     input, target, target_weight, meta = train_dataset[0]
+    print("input:",input.shape)
     print("target:",target.shape)
     print("target_weight:",target_weight.shape)
     print("meta:",meta)
