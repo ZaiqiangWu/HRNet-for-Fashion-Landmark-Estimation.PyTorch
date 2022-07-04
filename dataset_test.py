@@ -107,7 +107,7 @@ def main():
             # normalize,
         ])
     )
-    for i in range(len(train_dataset)):
+    for i in range(300):
         print("----------------------------------")
         print_info(train_dataset,i)
 
@@ -121,8 +121,8 @@ def print_info(datasett, index):
     print("img id:", meta['imgnum'])
     print("cat id:", meta['category_id'])
     print("roation:", meta['rotation'])
-    # plt.imshow(input.permute(1,2,0).numpy())
-    # plt.show()
+    plt.imshow(input.permute(1,2,0).numpy())
+    plt.show()
 
 
 if __name__ == '__main__':
