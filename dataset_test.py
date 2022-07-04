@@ -108,9 +108,9 @@ def main():
         ])
     )
     input, target, target_weight, meta = train_dataset[0]
-    print("target",target)
-    print("target_weight",target_weight)
-    print("meta",meta)
+    print("target:",target.shape)
+    print("target_weight:",target_weight.shape)
+    print("meta:",meta)
     #plt.imshow(input.permute(1,2,0).numpy())
     #plt.show()
 
