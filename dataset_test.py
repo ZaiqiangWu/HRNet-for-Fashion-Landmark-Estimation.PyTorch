@@ -107,7 +107,10 @@ def main():
             normalize,
         ])
     )
-    print(train_dataset[0].keys())
+    #input, target, target_weight, meta
+    print(len(train_dataset[0]))
+    plt.imshow(train_dataset[0][0])
+    plt.show()
 
 
 if __name__ == '__main__':
