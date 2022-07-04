@@ -104,12 +104,15 @@ def main():
         cfg, cfg.DATASET.ROOT, cfg.DATASET.TEST_SET, True,
         transforms.Compose([
             transforms.ToTensor(),
-            normalize,
+            #normalize,
         ])
     )
     input, target, target_weight, meta = train_dataset[0]
-    plt.imshow(input.permute(1,2,0).numpy())
-    plt.show()
+    print("target",target)
+    print("target_weight",target_weight)
+    print("meta",meta)
+    #plt.imshow(input.permute(1,2,0).numpy())
+    #plt.show()
 
 
 if __name__ == '__main__':
