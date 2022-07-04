@@ -107,7 +107,12 @@ def main():
             # normalize,
         ])
     )
-    input, target, target_weight, meta = train_dataset[1]
+    for i in range(10):
+        print_info(train_dataset,i)
+
+
+def print_info(datasett, index):
+    input, target, target_weight, meta = datasett[index]
     print("input:", input.shape)
     print("target:", target.shape)
     print("target_weight:", target_weight.shape)
