@@ -107,9 +107,8 @@ def main():
             normalize,
         ])
     )
-    #input, target, target_weight, meta
-    print(len(train_dataset[0]))
-    plt.imshow(train_dataset[0][0])
+    input, target, target_weight, meta = train_dataset[0]
+    plt.imshow(input.permute(1,2,0).numpy())
     plt.show()
 
 
