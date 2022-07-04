@@ -112,7 +112,9 @@ def main():
     print("target:", target.shape)
     print("target_weight:", target_weight.shape)
     print("meta:", meta.keys())
+    print("img id:", meta['imgnum'])
     print("cat id:", meta['category_id'])
+    print("roation:", meta['rotation'])
     # plt.imshow(input.permute(1,2,0).numpy())
     # plt.show()
 
