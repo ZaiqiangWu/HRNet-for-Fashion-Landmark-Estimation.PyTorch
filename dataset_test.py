@@ -107,7 +107,7 @@ def main():
             normalize,
         ])
     )
-    print(train_dataset[0])
+    print(train_dataset[0].keys())
 
 
 if __name__ == '__main__':
