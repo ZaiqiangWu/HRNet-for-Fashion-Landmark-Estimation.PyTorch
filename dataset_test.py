@@ -109,7 +109,7 @@ def main():
     )
     for i in range(300):
         print("----------------------------------")
-        print_info(train_dataset,18)
+        print_info(train_dataset,i)
 
 
 def print_info(datasett, index):
