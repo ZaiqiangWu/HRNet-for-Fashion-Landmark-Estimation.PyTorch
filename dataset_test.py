@@ -93,7 +93,7 @@ def main():
     torch.backends.cudnn.enabled = cfg.CUDNN.ENABLED
 
     cfg.defrost()
-    #cfg.TEST.MODEL_FILE = 'models/pose_hrnet-w48_384x288-deepfashion2_mAP_0.7017.pth'
+    # cfg.TEST.MODEL_FILE = 'models/pose_hrnet-w48_384x288-deepfashion2_mAP_0.7017.pth'
     cfg.TEST.DEEPFASHION2_BBOX_FILE = 'data/bbox_result_val.pkl'
 
     # Data loading code
@@ -104,16 +104,17 @@ def main():
         cfg, cfg.DATASET.ROOT, cfg.DATASET.TEST_SET, True,
         transforms.Compose([
             transforms.ToTensor(),
-            #normalize,
+            # normalize,
         ])
     )
-    input, target, target_weight, meta = train_dataset[0]
-    print("input:",input.shape)
-    print("target:",target.shape)
-    print("target_weight:",target_weight.shape)
-    print("meta:",meta.keys())
-    #plt.imshow(input.permute(1,2,0).numpy())
-    #plt.show()
+    input, target, target_weight, meta = train_dataset[1]
+    print("input:", input.shape)
+    print("target:", target.shape)
+    print("target_weight:", target_weight.shape)
+    print("meta:", meta.keys())
+    print("cat id:", meta['category_id'])
+    # plt.imshow(input.permute(1,2,0).numpy())
+    # plt.show()
 
 
 if __name__ == '__main__':
