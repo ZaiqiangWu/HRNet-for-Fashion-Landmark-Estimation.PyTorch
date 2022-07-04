@@ -92,7 +92,8 @@ def main():
     torch.backends.cudnn.deterministic = cfg.CUDNN.DETERMINISTIC
     torch.backends.cudnn.enabled = cfg.CUDNN.ENABLED
 
-    cfg.TEST.MODEL_FILE = 'models/pose_hrnet-w48_384x288-deepfashion2_mAP_0.7017.pth'
+    cfg.defrost()
+    #cfg.TEST.MODEL_FILE = 'models/pose_hrnet-w48_384x288-deepfashion2_mAP_0.7017.pth'
     cfg.TEST.DEEPFASHION2_BBOX_FILE = 'data/bbox_result_val.pkl'
 
     # Data loading code
