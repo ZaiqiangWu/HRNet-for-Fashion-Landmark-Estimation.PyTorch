@@ -69,8 +69,11 @@ We uploaded our converted annotation file onto [OneDrive](#OneDrive-Cloud-Storag
 
 
 #### 3) Install the deepfashion_api
-Enter `${DF2_ROOT}/deepfashion2_api/PythonAPI` and run
+
    ```
+   git submodule update --init external/deepfashion2
+   cd external/deepfashion2/deepfashion2_api/PythonAPI
+   make -j8
    python setup.py install
    ```
 Note that the `deepfashion2_api` is modified from the `cocoapi` without changing the package name. Therefore, conflicts occur if you try to install this package when you have installed the original `cocoapi` in your computer. We provide two feasible solutions: 1) run our code in a `virtualenv` 2) use the `deepfashion2_api` as a local pacakge. Also note that `deepfashion2_api` is different with `cocoapi` mainly in the number of classes and the values of standard variations for keypoints.
