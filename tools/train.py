@@ -209,11 +209,11 @@ def main():
     logger.info("=> Start training...")
 
     for epoch in range(begin_epoch, cfg.TRAIN.END_EPOCH):
-        lr_scheduler.step()
-
         # train for one epoch
         train(cfg, train_loader, train_dataset, model, criterion, optimizer, epoch,
               final_output_dir, tb_log_dir, writer_dict)
+
+        lr_scheduler.step()
 
         torch.save(model.module.state_dict(), final_output_dir + '/epoch-%d.pth' % epoch)
         # evaluate on validation set
