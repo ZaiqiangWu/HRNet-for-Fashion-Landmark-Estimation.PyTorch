@@ -66,9 +66,9 @@ class DeepFashion2Dataset(JointsDataset):
         self.coco = COCO(self._get_ann_file_keypoint())
 
         # deal with class names
-        cats_temp = [cat['name']
+        cats = [cat['name']
                 for cat in self.coco.loadCats(self.coco.getCatIds())]
-        cats = [cats_temp[i-1] for i in self.select_cat]
+        #cats = [cats_temp[i-1] for i in self.select_cat]
 
         self.classes = ['__background__'] + cats
         logger.info('=> classes: {}'.format(self.classes))
@@ -206,7 +206,7 @@ class DeepFashion2Dataset(JointsDataset):
                 obj['clean_bbox'] = [x1, y1, x2-x1, y2-y1]
                 valid_objs.append(obj)
         objs = valid_objs
-        print(valid_objs)
+        #print(valid_objs)
         rec = []
         for obj in objs:
             cls = self._coco_ind_to_class_ind[obj['category_id']]
