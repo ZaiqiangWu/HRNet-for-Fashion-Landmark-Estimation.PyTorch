@@ -36,6 +36,10 @@ from utils.utils import get_model_summary
 import dataset
 import models
 
+import wandb
+
+wandb.init(project="GarmentLandmarks", entity="crest")
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train keypoints network')
@@ -208,6 +212,12 @@ def main():
     )
     logger.info("=> Start training...")
 
+    wandb.config = {
+        "learning_rate": cfg.TRAIN.LR_STEP,
+        "epochs": cfg.TRAIN.END_EPOCH,
+        "batch_size": cfg.TRAIN.BATCH_SIZE_PER_GPU
+    }
+
     for epoch in range(begin_epoch, cfg.TRAIN.END_EPOCH):
         # train for one epoch
         train(cfg, train_loader, train_dataset, model, criterion, optimizer, epoch,
@@ -227,6 +237,10 @@ def main():
             best_model = True
         else:
             best_model = False
+
+        wandb.log({'perf': perf_indicator})
+        # Optional
+        wandb.watch(model)
 
         logger.info('=> saving checkpoint to {}'.format(final_output_dir))
         save_checkpoint({
