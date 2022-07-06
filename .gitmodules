@@ -1,1 +1,4 @@
 
+[submodule "external/deepfashion2"]
+	path = external/deepfashion2
+	url = https://github.com/ZaiqiangWu/DeepFashion2.git
