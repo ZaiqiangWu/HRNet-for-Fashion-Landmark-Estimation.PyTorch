@@ -206,7 +206,7 @@ class DeepFashion2Dataset(JointsDataset):
                 obj['clean_bbox'] = [x1, y1, x2-x1, y2-y1]
                 valid_objs.append(obj)
         objs = valid_objs
-        print(obj)
+        print(len(objs))
 
         rec = []
         for obj in objs:
