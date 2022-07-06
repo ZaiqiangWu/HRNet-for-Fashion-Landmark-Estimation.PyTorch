@@ -87,7 +87,7 @@ class DeepFashion2Dataset(JointsDataset):
         self.num_images = len(self.image_set_index)
         logger.info('=> num_images: {}'.format(self.num_images))
 
-        self.num_joints = 294
+        self.num_joints = cfg.MODEL.NUM_JOINTS#294
         self.gt_class_keypoints_dict = {1: (0, 25), 2: (25, 58), 3: (58, 89),
                 4: (89, 128), 5: (128, 143), 6: (143, 158), 7: (158, 168),
                 8: (168, 182), 9: (182, 190), 10: (190, 219),
