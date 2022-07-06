@@ -60,7 +60,7 @@ def train(config, train_loader, train_dataset, model, criterion, optimizer, epoc
         if config.MODEL.TARGET_TYPE == 'gaussian':
             # block irrelevant channels in output
             output = output * channel_mask.unsqueeze(3)
-            preds, maxvals = get_final_preds(config, output.detach().cpu().numpy(), c, s)
+            preds_local, maxvals = get_final_preds(config, output.detach().cpu().numpy(), c, s)
         
         elif config.MODEL.TARGET_TYPE == 'coordinate':
             heatmap, output = output
