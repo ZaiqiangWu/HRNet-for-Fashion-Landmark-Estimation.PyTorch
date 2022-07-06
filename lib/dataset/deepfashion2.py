@@ -206,10 +206,10 @@ class DeepFashion2Dataset(JointsDataset):
                 obj['clean_bbox'] = [x1, y1, x2-x1, y2-y1]
                 valid_objs.append(obj)
         objs = valid_objs
-        print(len(objs))
 
         rec = []
         for obj in objs:
+            print(obj['category_id'])
             cls = self._coco_ind_to_class_ind[obj['category_id']]
 
             # ignore objs of not chosen class, or without keypoints annotation
