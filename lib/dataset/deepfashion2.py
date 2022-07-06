@@ -442,8 +442,6 @@ class DeepFashion2Dataset(JointsDataset):
                     oks_thre
                 )
             else:
-                print(img_kpts)
-                print(oks_thre)#TODO
                 keep = oks_nms(
                     [img_kpts[i] for i in range(len(img_kpts))],
                     oks_thre
