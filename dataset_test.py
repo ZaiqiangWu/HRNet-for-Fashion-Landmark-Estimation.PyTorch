@@ -108,7 +108,7 @@ def main():
         ])
     )
     print(len(train_dataset))
-    for i in range(300):
+    for i in range(1):
         print("----------------------------------")
         print_info(train_dataset,i)
 
@@ -124,8 +124,8 @@ def print_info(datasett, index):
     print("cat id:", meta['category_id'])
     print("roation:", meta['rotation'])
     # bgr!! need to change to rgb
-    plt.imshow(input.permute(1,2,0).numpy())
-    plt.show()
+    #plt.imshow(input.permute(1,2,0).numpy())
+    #plt.show()
 
 
 if __name__ == '__main__':
