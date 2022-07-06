@@ -66,8 +66,10 @@ class DeepFashion2Dataset(JointsDataset):
         self.coco = COCO(self._get_ann_file_keypoint())
 
         # deal with class names
-        cats = [cat['name']
+        cats_temp = [cat['name']
                 for cat in self.coco.loadCats(self.coco.getCatIds())]
+        cats = [cats_temp[i-1] for i in self.select_cat]
+
         self.classes = ['__background__'] + cats
         logger.info('=> classes: {}'.format(self.classes))
         self.num_classes = len(self.classes)
