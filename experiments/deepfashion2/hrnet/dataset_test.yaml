@@ -28,7 +28,7 @@ DATASET:
 MODEL:
   INIT_WEIGHTS: true
   NAME: pose_hrnet
-  NUM_JOINTS: 294
+  NUM_JOINTS: 25
   PRETRAINED: '' 
   TARGET_TYPE: gaussian
   IMAGE_SIZE:
