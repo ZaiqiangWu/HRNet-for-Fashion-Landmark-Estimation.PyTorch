@@ -120,6 +120,7 @@ def oks_iou(g, d, a_g, a_d, sigmas=None, in_vis_thre=None):
     xg = g[0::3]
     yg = g[1::3]
     vg = g[2::3]
+    vars=vars[0:xg.shape[0]]
     ious = np.zeros((d.shape[0]))
     for n_d in range(0, d.shape[0]):
         xd = d[n_d, 0::3]
