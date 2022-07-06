@@ -123,6 +123,7 @@ def print_info(datasett, index):
     print("img:", meta['image'])
     print("cat id:", meta['category_id'])
     print("roation:", meta['rotation'])
+    # bgr!! need to change to rgb
     plt.imshow(input.permute(1,2,0).numpy())
     plt.show()
 
