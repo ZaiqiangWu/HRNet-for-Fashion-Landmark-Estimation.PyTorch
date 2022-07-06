@@ -116,7 +116,6 @@ def train(config, train_loader, train_dataset, model, criterion, optimizer, epoc
             prefix = '{}_{}'.format(os.path.join(output_dir, 'train'), i)
 
             save_debug_images(config, input, meta, target, preds_local, output, prefix)
-        break#TODO
         
 
 def validate(config, val_loader, val_dataset, model, criterion, output_dir,
