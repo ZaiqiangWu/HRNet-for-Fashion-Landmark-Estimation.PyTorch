@@ -171,13 +171,13 @@ def load_model():
 def play(model, file_name):
     im = cv2.imread("./images/" + file_name + ".JPG")
     image = torch.from_numpy(im) / 255.0
-    print(image.shape)
+    print("image shape", image.shape)
     image = image.permute([2, 0, 1])
-    print(image.shape)
+    print("image shape", image.shape)
     mean = [0.485, 0.456, 0.406]  # [image[0].mean(),image[1].mean(),image[2].mean()]#
     std = [0.229, 0.224, 0.225]  # [image[0].std(), image[1].std(),image[2].std()]#
-    #mean = [image[0].mean(), image[1].mean(), image[2].mean()]  #
-    #std = [image[0].std(), image[1].std(), image[2].std()]  #
+    # mean = [image[0].mean(), image[1].mean(), image[2].mean()]  #
+    # std = [image[0].std(), image[1].std(), image[2].std()]  #
     normalize = transforms.Normalize(
         mean=mean, std=std
     )
@@ -200,7 +200,7 @@ def play(model, file_name):
     with torch.no_grad():
         heatmap = model(input)
     end = time.time()
-    print(heatmap.shape)
+    print("heatmap shape: ", heatmap.shape)
     print("Elapsed time: ", end - start)
     preds, maxvals = get_max_preds(heatmap.cpu().detach().numpy())
     print(len(preds[0]))
