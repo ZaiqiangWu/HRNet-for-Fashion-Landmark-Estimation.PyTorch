@@ -224,6 +224,7 @@ def play(model, file_name):
     scat.remove()
     path_to_img = 'output-' + file_name + '.png'
     img = plt.imread(path_to_img)
+    wandb.init()
     wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
     wandb.finish()
     # plt.show()
