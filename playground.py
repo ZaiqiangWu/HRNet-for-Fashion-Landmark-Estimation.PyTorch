@@ -217,16 +217,17 @@ def play(model, file_name):
             ys.append(preds[0][i][1] * 4)
 
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
-    plt.imshow(im)
+    fig, ax=plt.imshow(im)
     print("num of landmarks", len(xs))
     scat = plt.scatter(xs, ys, c="blue")
+    ids = range(len(xs))
+    for i, txt in enumerate(ids):
+        ax.annotate(txt, (xs[i], ys[i]))
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     scat.remove()
     path_to_img = 'output-' + file_name + '.png'
     img = plt.imread(path_to_img)
-    wandb.init()
     wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
-    wandb.finish()
     # plt.show()
 
 
@@ -234,8 +235,8 @@ if __name__ == '__main__':
     # main()
     model = load_model()
     i = 0
-    wandb.init()
     while (os.path.exists("./images/" + str(i).zfill(2) + ".JPG")):
         print("Processing: ", i)
         play(model, str(i).zfill(2))
         i = i + 1
+    wandb.finish()
