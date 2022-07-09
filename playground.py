@@ -233,6 +233,7 @@ if __name__ == '__main__':
     # main()
     model = load_model()
     i = 0
+    wandb.init()
     while (os.path.exists("./images/" + str(i).zfill(2) + ".JPG")):
         print("Processing: ", i)
         play(model, str(i).zfill(2))
