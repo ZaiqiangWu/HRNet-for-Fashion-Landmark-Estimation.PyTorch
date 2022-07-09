@@ -214,6 +214,7 @@ def play(model, file_name):
 
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
     plt.imshow(im)
+    print("num of landmarks", len(xs))
     plt.scatter(xs, ys, c="blue")
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     # plt.show()
