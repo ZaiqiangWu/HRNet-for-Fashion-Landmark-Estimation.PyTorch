@@ -221,10 +221,14 @@ def play(model, file_name):
     print("num of landmarks", len(xs))
     scat = plt.scatter(xs, ys, c="blue")
     txt = range(len(xs))
+    ann_list = []
     for i in range(len(xs)):
-        plt.annotate(txt[i], xy=(xs[i], ys[i]), xytext=(xs[i] + 0.1, ys[i] + 0.1))
+        ann=plt.annotate(txt[i], xy=(xs[i], ys[i]), xytext=(xs[i] + 0.1, ys[i] + 0.1))
+        ann_list.append(ann)
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     scat.remove()
+    for ann in ann_list:
+        ann.remove()
     path_to_img = 'output-' + file_name + '.png'
     img = plt.imread(path_to_img)
     wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
