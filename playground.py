@@ -36,6 +36,10 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+import wandb
+
+wandb.init(project="GarmentLandmarks", entity="crest")
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Train keypoints network')
@@ -218,6 +222,10 @@ def play(model, file_name):
     scat = plt.scatter(xs, ys, c="blue")
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     scat.remove()
+    path_to_img = 'output-' + file_name + '.png'
+    img = plt.imread(path_to_img)
+    wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
+    wandb.finish()
     # plt.show()
 
 
