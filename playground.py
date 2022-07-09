@@ -159,7 +159,7 @@ def load_model():
         cfg, is_train=False
     )
     cfg.defrost()
-    cfg.TEST.MODEL_FILE = 'output/deepfashion2/pose_hrnet/top1_only/model_best.pth'
+    cfg.TEST.MODEL_FILE = 'output/deepfashion2/pose_hrnet/top1_only/2022-07-06-20-21/model_best.pth'
 
     logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
     model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=True)  # False
