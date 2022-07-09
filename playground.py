@@ -36,9 +36,9 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-import wandb
+#import wandb
 
-wandb.init(project="GarmentLandmarks", entity="crest")
+#wandb.init(project="GarmentLandmarks", entity="crest")
 
 
 def parse_args():
@@ -231,7 +231,7 @@ def play(model, file_name):
         ann.remove()
     path_to_img = 'output-' + file_name + '.png'
     img = plt.imread(path_to_img)
-    wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
+    #wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
     # plt.show()
 
 
@@ -243,4 +243,4 @@ if __name__ == '__main__':
         print("Processing: ", i)
         play(model, str(i).zfill(2))
         i = i + 1
-    wandb.finish()
+    #wandb.finish()
