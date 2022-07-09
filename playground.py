@@ -217,7 +217,8 @@ def play(model, file_name):
             ys.append(preds[0][i][1] * 4)
 
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
-    fig, ax=plt.imshow(im)
+    fig, ax =plt.figure()
+    plt.imshow(im)
     print("num of landmarks", len(xs))
     scat = plt.scatter(xs, ys, c="blue")
     ids = range(len(xs))
