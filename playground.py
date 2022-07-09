@@ -217,13 +217,12 @@ def play(model, file_name):
             ys.append(preds[0][i][1] * 4)
 
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
-    fig, ax =plt.figure()
     plt.imshow(im)
     print("num of landmarks", len(xs))
     scat = plt.scatter(xs, ys, c="blue")
-    ids = range(len(xs))
-    for i, txt in enumerate(ids):
-        ax.annotate(txt, (xs[i], ys[i]))
+    txt = range(len(xs))
+    for i in range(len(xs)):
+        plt.annotate(txt[i], xy=(xs[i], ys[i]), xytext=(xs[i] + 0.1, ys[i] + 0.1))
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     scat.remove()
     path_to_img = 'output-' + file_name + '.png'
