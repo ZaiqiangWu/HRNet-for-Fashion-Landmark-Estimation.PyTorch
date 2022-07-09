@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument('--cfg',
                         help='experiment configure file name',
                         # required=True,
-                        default='experiments/deepfashion2/hrnet/w48_384x288_adam_lr1e-3.yaml',
+                        default='experiments/deepfashion2/hrnet/top1_only.yaml',
                         type=str)
 
     parser.add_argument('opts',
@@ -159,7 +159,7 @@ def load_model():
         cfg, is_train=False
     )
     cfg.defrost()
-    cfg.TEST.MODEL_FILE = 'models/pose_hrnet-w48_384x288-deepfashion2_mAP_0.7017.pth'
+    cfg.TEST.MODEL_FILE = 'output/deepfashion2/pose_hrnet/top1_only/model_best.pth'
 
     logger.info('=> loading model from {}'.format(cfg.TEST.MODEL_FILE))
     model.load_state_dict(torch.load(cfg.TEST.MODEL_FILE), strict=True)  # False
@@ -174,10 +174,10 @@ def play(model, file_name):
     print(image.shape)
     image = image.permute([2, 0, 1])
     print(image.shape)
-    #mean = [0.485, 0.456, 0.406]  # [image[0].mean(),image[1].mean(),image[2].mean()]#
-    #std = [0.229, 0.224, 0.225]  # [image[0].std(), image[1].std(),image[2].std()]#
-    mean = [image[0].mean(),image[1].mean(),image[2].mean()]#
-    std = [image[0].std(), image[1].std(),image[2].std()]#
+    mean = [0.485, 0.456, 0.406]  # [image[0].mean(),image[1].mean(),image[2].mean()]#
+    std = [0.229, 0.224, 0.225]  # [image[0].std(), image[1].std(),image[2].std()]#
+    #mean = [image[0].mean(), image[1].mean(), image[2].mean()]  #
+    #std = [image[0].std(), image[1].std(), image[2].std()]  #
     normalize = transforms.Normalize(
         mean=mean, std=std
     )
@@ -187,7 +187,7 @@ def play(model, file_name):
 
     print(image.shape)
     im = image.permute(1, 2, 0).cpu().numpy()
-    im = im[:, :, [2, 1, 0]]
+    im = im[:, :, [2, 1, 0]]  # convert bgr to rgb
     print(image[0].mean())
     print(image[0].std())
     image = normalize(image)
