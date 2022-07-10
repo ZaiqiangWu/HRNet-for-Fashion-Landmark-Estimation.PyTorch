@@ -219,20 +219,24 @@ def play(model, file_name):
             colors.append(maxvals[0][i])
 
     # plt.imshow(heatmap.cpu().squeeze().mean(0).detach().numpy())
+    fig=plt.figure()
+    fig.clear()
     plt.imshow(im)
     print("num of landmarks", len(xs))
     scat = plt.scatter(xs, ys, c=colors, cmap='plasma')
+    cb = plt.colorbar()
     txt = range(len(xs))
     ann_list = []
     for i in range(len(xs)):
         ann=plt.annotate(txt[i]+1, xy=(xs[i], ys[i]), xytext=(xs[i] + 0.1, ys[i] + 0.1))
         ann_list.append(ann)
-    cb = plt.colorbar()
+
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     scat.remove()
-    cb.remove()
+    #cb.remove()
     for ann in ann_list:
         ann.remove()
+    fig.close()
     #path_to_img = 'output-' + file_name + '.png'
     #img = plt.imread(path_to_img)
     #wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
