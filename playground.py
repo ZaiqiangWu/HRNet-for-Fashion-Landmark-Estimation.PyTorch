@@ -236,7 +236,6 @@ def play(model, file_name):
     #cb.remove()
     for ann in ann_list:
         ann.remove()
-    fig.close()
     #path_to_img = 'output-' + file_name + '.png'
     #img = plt.imread(path_to_img)
     #wandb.log({"img": [wandb.Image(img, caption="Cafe")]})
