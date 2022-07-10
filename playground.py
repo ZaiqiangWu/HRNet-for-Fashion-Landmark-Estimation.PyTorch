@@ -227,7 +227,7 @@ def play(model, file_name):
     for i in range(len(xs)):
         ann=plt.annotate(txt[i]+1, xy=(xs[i], ys[i]), xytext=(xs[i] + 0.1, ys[i] + 0.1))
         ann_list.append(ann)
-        plt.colorbar()
+    plt.colorbar()
     plt.savefig('output-' + file_name + '.png', bbox_inches='tight')
     scat.remove()
     for ann in ann_list:
